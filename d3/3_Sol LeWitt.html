@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin :0px;
+        overflow:hidden;
+    }
+</style>
+<body>
+     
+    <script>
+        const width=window.innerWidth;
+        const height=window.innerHeight;
+        const svg  = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("height", height);
+        svg.setAttribute("width", width); 
+        document.body.appendChild(svg);                                                                                    
+        console.log(document.body)
+    
+       // const rect = document.createElement('rect');// we cant use this for SVg but we need to use SVG namespace. as this will create an HTML elemnt not SVG elemnt
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("height", height);
+        rect.setAttribute("width", 10); 
+        svg.appendChild(rect); 
+
+        function create_rect (x){
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            const shift=x;
+            rect.setAttribute("x",shift)
+            rect.setAttribute("height", height);
+            rect.setAttribute("width", 10); 
+            svg.appendChild(rect);
+        }
+        const n=100
+
+        for (let i=0; i<n; i++){
+            create_rect(i*20);
+        }
+
+
+    </script>
+</body>
+
+
+</html>
