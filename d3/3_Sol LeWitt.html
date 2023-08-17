@@ -36,12 +36,13 @@
             rect.setAttribute("width", 10); 
             svg.appendChild(rect);
         }
+        //Const is created everytime when this is happening after for loop the const variable is being changed(block scooped)
+        //but var is global scope
         const n=100
 
         for (let i=0; i<n; i++){
             create_rect(i*20);
         }
-
 
     </script>
 </body>
