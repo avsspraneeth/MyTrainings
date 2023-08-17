@@ -28,20 +28,70 @@
         rect.setAttribute("width", 10); 
         svg.appendChild(rect); 
 
-        function create_rect (x){
+        function create_rect_vertical (x){
             const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
             const shift=x;
             rect.setAttribute("x",shift)
             rect.setAttribute("height", height);
             rect.setAttribute("width", 10); 
+            rect.setAttribute("mask", 'url(#circle-mymask2)'); 
             svg.appendChild(rect);
         }
         //Const is created everytime when this is happening after for loop the const variable is being changed(block scooped)
         //but var is global scope
+        function create_rect_hor (y){
+            
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            const shift=y;
+            rect.setAttribute("y",shift)
+            rect.setAttribute("height", 10);
+            rect.setAttribute("width", width);
+            rect.setAttribute("mask", 'url(#circle-mymask1)'); 
+            svg.appendChild(rect);
+        }
+    ////////////////////
+    
+            const mask = document.createElementNS("http://www.w3.org/2000/svg", "mask");
+            
+            mask.setAttribute('id','circle-mymask1')
+            svg.appendChild(mask);
+            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            
+            circle.setAttribute('cx',width/2);
+            circle.setAttribute('cy',height/2);
+            circle.setAttribute('r',200)
+            circle.setAttribute('fill','white')
+            mask.appendChild(circle);
+    //////////////////////////////////////////////////////
+            const mask2 = document.createElementNS("http://www.w3.org/2000/svg", "mask");
+            
+            mask2.setAttribute('id','circle-mymask2')
+            svg.appendChild(mask2);
+            
+            const rectmask = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rectmask.setAttribute('width',width);
+            rectmask.setAttribute('height',height);
+            rectmask.setAttribute('fill','white');
+            mask2.appendChild(rectmask);
+
+            const circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            
+            circle2.setAttribute('cx',width/2);
+            circle2.setAttribute('cy',height/2);
+            circle2.setAttribute('r',200)
+            circle2.setAttribute('fill','black')
+            mask2.appendChild(circle2);
+
+        //////////////
         const n=100
+    
 
         for (let i=0; i<n; i++){
-            create_rect(i*20);
+            create_rect_vertical(i*20);
+        }
+        for (let i=0; i<n; i++){
+            
+            create_rect_hor(i*20);
         }
 
     </script>
