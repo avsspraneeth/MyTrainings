@@ -1,3 +1,5 @@
+
+//////////////////
 //import  selection np from "https://cdn.jsdelivr.net/npm/d3-selection@3";
 //import selection  from "./node_modules/d3/src/index.js";
 
@@ -56,3 +58,4 @@ svg.selectAll('rect.ver')
 // use .append('g') at both the places and the check !!
 const mask2=svg.append('mask').attr('id','circle-mask2')
 mask2.append('circle').attr('cx',width/2).attr('cy',height/2).attr('r',250).attr('fill','white')
+
