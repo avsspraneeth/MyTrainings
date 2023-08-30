@@ -33,7 +33,7 @@ svg.attr('height',height);
 ////////////////////////// other way to do the same ////
 svg.selectAll('rect.hor')
 .data(d3.range(n))
-.join('rect')  // we can use .enter().append('rect') // if no elemnt then it will create .
+.join('rect')  // we can use .enter().append('rect') // if no elemnt then it will create .(alternate syntax)
 .attr('y',(d)=>d*20)
 .attr('width',width)
 .attr('height',10)
