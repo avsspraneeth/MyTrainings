@@ -51,7 +51,7 @@ console.log(entries)
 const new_entries=entries.reduce((accumlator2,d)=>{
     console.log(accumlator2[d.key] +"  "+d.value)
     accumlator2[d.key] = d.value;
-} , {})
+return accumlator2} , {})
 
 console.log(new_entries)
 
