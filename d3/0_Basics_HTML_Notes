@@ -1,4 +1,0 @@
-1. Difference between id and class is that way we access the element in CCS, #.id_name or #.Class_name.
-2. ID is unique but call can be used to multple elements.
-3. we cant change the value of an constant in JS but we can mutate the value of an property of an object.
-4. var is a global scope variable but let and const will 
