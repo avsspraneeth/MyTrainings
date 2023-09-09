@@ -1,0 +1,7 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+.tick text {
+  font-size: 24px;
+}
