@@ -1,7 +1,7 @@
 // const csv_url =
 //   "https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv";
 //or use
-const csv_url = "http://192.168.1.7:8080/iris.csv";
+const csv_url = "http://192.168.56.1:8080/iris.csv";
 import { scatterplot } from "./scatterPlot.js";
 import { menu } from "./menu.js";
 //instead of using d3.csv we can also do below, then we can use without d3.funtion()
@@ -29,9 +29,6 @@ const xMenu = select("div.menu-container")
   .attr("class", "x-menu-container");
 const yMenu = menuContainer.append("div").attr("class", "y-menu-container"); //both the above are same different ways to call /append
 
-xMenu.call(menu().id("x-menu").labeltext("X:"));
-yMenu.call(menu().id("y-menu").labeltext("Y:"));
-
 const main = async () => {
   const data_send = await csv(csv_url, parseRow);
   //const x = scaleLinear().domain([d3.min(data, xValue), d3.max(data, xValue)]);  //or use below as an alternative
@@ -48,12 +45,20 @@ const main = async () => {
   svg.call(plot);
 
   let i = 0;
-  const columns = [
-    "petal_width",
-    "sepal_width",
-    "petal_length",
-    "sepal_length",
+  // const columns = [
+  //   "petal_width",
+  //   "sepal_width",
+  //   "petal_length",
+  //   "sepal_length",
+  // ];
+
+  const options = [
+    { value: "petal_width", text: "1" },
+    { value: "sepal_width", text: "2" },
+    { value: "petal_length", text: "2" },
+    { value: "sepal_length", text: "4" },
   ];
+
   // setInterval(() => {
 
   //   i = i % columns.length;
@@ -63,6 +68,8 @@ const main = async () => {
   //   svg.call(plot);
   //   i++;
   // }, 2000);
+  xMenu.call(menu().id("x-menu").labeltext("X:").options(options));
+  yMenu.call(menu().id("y-menu").labeltext("Y:").options(options));
 };
 
 main();
