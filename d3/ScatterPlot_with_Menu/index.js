@@ -5,7 +5,7 @@ const csv_url = "http://192.168.56.1:8080/iris.csv";
 import { scatterplot } from "./scatterPlot.js";
 import { menu } from "./menu.js";
 //instead of using d3.csv we can also do below, then we can use without d3.funtion()
-const { csv, select, scaleLinear } = d3;
+const { csv, select, scaleLinear, dispatch } = d3;
 
 const parseRow = (d) => {
   d.sepal_length = +d.sepal_length;
@@ -53,10 +53,10 @@ const main = async () => {
   // ];
 
   const options = [
-    { value: "petal_width", text: "1" },
-    { value: "sepal_width", text: "2" },
-    { value: "petal_length", text: "2" },
-    { value: "sepal_length", text: "4" },
+    { value: "petal_width", text: "Petal Width" },
+    { value: "sepal_width", text: "Sepal Width " },
+    { value: "petal_length", text: "Petal Length" },
+    { value: "sepal_length", text: "Sepal Length" },
   ];
 
   // setInterval(() => {
@@ -68,8 +68,24 @@ const main = async () => {
   //   svg.call(plot);
   //   i++;
   // }, 2000);
-  xMenu.call(menu().id("x-menu").labeltext("X:").options(options));
-  yMenu.call(menu().id("y-menu").labeltext("Y:").options(options));
+  xMenu.call(
+    menu()
+      .id("x-menu")
+      .labeltext("X:")
+      .options(options)
+      .on("change", (value) => {
+        console.log(value);
+      })
+  );
+  yMenu.call(
+    menu()
+      .id("y-menu")
+      .labeltext("Y:")
+      .options(options)
+      .on("change", (value) => {
+        console.log(value);
+      })
+  );
 };
 
 main();
